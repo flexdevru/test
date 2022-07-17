@@ -3,7 +3,7 @@ node_modules/
 [Dd]ist/
 
 # Other files and folders
-.settings/
+.token
 
 # Executables
 *.swf
