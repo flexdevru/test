@@ -4,13 +4,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
+//const URL_LOADER_LIMIT = 8192
+
 module.exports = {
 	entry: {
 		main: path.resolve(__dirname, './src/Application.ts'),
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
-		filename: 'bundle-[hash].js',
+		filename: 'bundle-[fullhash].js',
 	},
 	resolve: {
 		extensions: ['.ts', '.js'],
@@ -20,18 +22,9 @@ module.exports = {
 			{
 				test: /\.tsx?$/,
 				loader: 'ts-loader',
-			},
-			// {
-			//   test: /\.(svg|woff|woff2|ttf|eot|otf)([\?]?.*)$/,
-			//   use: [
-			//     {
-			//       loader: 'file-loader?name=assets/fonts/[name].[ext]',
-			//     },
-			//   ],
-			// },
-		],
-	},
-	/*mode: 'development',*/
+			}
+		]
+    },
 	devtool: 'inline-source-map',
 	performance: {
 		hints: false,
@@ -51,20 +44,24 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			title: __dirname.split('\\')[__dirname.split('\\').length - 1],
-			template: path.resolve(__dirname, './src/index.html'), // шаблон
-			filename: 'index.html', // название выходного файла
+			template: path.resolve(__dirname, './src/index.html'),
+			filename: 'index.html',
 		}),
-		new CleanWebpackPlugin(),
+		new CleanWebpackPlugin({
+			dry: true,
+			verbose: true,
+			dangerouslyAllowCleanPatternsOutsideProject: true
+		}),
 		new webpack.HotModuleReplacementPlugin(),
-		//new CopyWebpackPlugin({
-		//	patterns: [
-		//		{
-		//			from: '**/*',
-		//			context: path.resolve(__dirname, 'src', 'assets'),
-		//			to: './assets',
-		//		},
-		//	],
-		//})
+		new CopyWebpackPlugin({
+			patterns: [
+				{
+					from: '**/*',
+					context: path.resolve(__dirname, './fonts'),
+					to: './fonts',
+				},
+			],
+		})
 	],
 	
 }
