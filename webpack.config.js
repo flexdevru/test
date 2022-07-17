@@ -1,17 +1,37 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const webpack = require('webpack');
 
 module.exports = {
 	entry: {
-		main: path.resolve(__dirname, './src/Application.js'),
+		main: path.resolve(__dirname, './src/Application.ts'),
 	},
 	output: {
 		path: path.resolve(__dirname, './dist'),
-		filename: '[name].bundle.js',
+		filename: 'bundle-[hash].js',
 	},
-	mode: 'development',
+	resolve: {
+		extensions: ['.ts', '.js'],
+	},
+	module: {
+		rules: [
+			{
+				test: /\.tsx?$/,
+				loader: 'ts-loader',
+			},
+			// {
+			//   test: /\.(svg|woff|woff2|ttf|eot|otf)([\?]?.*)$/,
+			//   use: [
+			//     {
+			//       loader: 'file-loader?name=assets/fonts/[name].[ext]',
+			//     },
+			//   ],
+			// },
+		],
+	},
+	/*mode: 'development',*/
 	devtool: 'inline-source-map',
 	performance: {
 		hints: false,
@@ -36,6 +56,15 @@ module.exports = {
 		}),
 		new CleanWebpackPlugin(),
 		new webpack.HotModuleReplacementPlugin(),
+		//new CopyWebpackPlugin({
+		//	patterns: [
+		//		{
+		//			from: '**/*',
+		//			context: path.resolve(__dirname, 'src', 'assets'),
+		//			to: './assets',
+		//		},
+		//	],
+		//})
 	],
 	
 }
