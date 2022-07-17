@@ -17,7 +17,7 @@ if (minutes == 0) minutes = '00';
 else if (minutes < 10) minutes = '0' + minutes;
 if (seconds == 0) seconds = '00';
 else if (seconds < 10) seconds = '0' + seconds;
-var res = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+var res = day + '.' + month + '.' + year + ' ' + hours + ':' + minutes + ':' + seconds + ' UTC';
 res = 'export class CompilationParams { public static COMPILATION_DATE: string = "' + res + '"; }';
 fs.writeFileSync(target, res);
 
