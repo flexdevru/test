@@ -1,8 +1,6 @@
 # Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+node_modules/
+[Dd]ist/
 
 # Other files and folders
 .settings/
