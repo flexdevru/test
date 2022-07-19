@@ -1,4 +1,5 @@
 import WebFont = require('webfontloader');
+import { FontsParams } from '../utils/FontsParams';
 
 export class FontsManager {
 	private static _instance: FontsManager;
@@ -15,7 +16,8 @@ export class FontsManager {
 		WebFont.load({
 			custom:
 			{
-				families: value,
+				//families: value,
+				families: FontsParams.FONTS,
 				urls: ['fonts/fonts.css']
 			},
 			active: function () { onLoad() },

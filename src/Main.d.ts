@@ -4,8 +4,10 @@ export declare class Main extends PIXI.Container {
     static instance: Main;
     private last_time;
     private fps_label;
+    private data?;
     constructor();
     private onAssetsLoadComplete;
     private createChildren;
+    private onPointerDown;
     show_fps(): void;
 }

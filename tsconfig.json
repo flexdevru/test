@@ -3,11 +3,12 @@
     "noImplicitAny": false,
     "noEmitOnError": true,
     "removeComments": false,
-    "sourceMap": true,
+    "sourceMap": false,
     "target": "es5",
-	"declaration": true, 
-	"strict": true,
-	"typeRoots" : ["node_modules/pixi.js"],
+	  "declaration": true, 
+	  "strict": true,
+    "allowSyntheticDefaultImports": true,
+	  "typeRoots" : ["node_modules/pixi.js"],
     "types": ["pixi.js"]
   },
   "include": [

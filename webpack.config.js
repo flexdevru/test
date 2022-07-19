@@ -11,8 +11,8 @@ module.exports = {
 		main: path.resolve(__dirname, './src/Application.ts'),
 	},
 	output: {
-		path: path.resolve(__dirname, './dist'),
-		filename: 'bundle-[fullhash].js',
+		path: path.resolve(__dirname, './build'),
+		filename: 'bundle.js',
 	},
 	resolve: {
 		extensions: ['.ts', '.js'],
@@ -25,7 +25,7 @@ module.exports = {
 			}
 		]
     },
-	devtool: 'inline-source-map',
+	//devtool: 'inline-source-map',
 	performance: {
 		hints: false,
 		maxEntrypointSize: 512000,
@@ -48,7 +48,7 @@ module.exports = {
 			filename: 'index.html',
 		}),
 		new CleanWebpackPlugin({
-			dry: true,
+			dry: false,
 			verbose: true,
 			dangerouslyAllowCleanPatternsOutsideProject: true
 		}),
@@ -59,7 +59,20 @@ module.exports = {
 					from: '**/*',
 					context: path.resolve(__dirname, './fonts'),
 					to: './fonts',
+					noErrorOnMissing: true,
 				},
+				{
+					from: '**/*',
+					context: path.resolve(__dirname, './data/images'),
+					to: './data/images',
+					noErrorOnMissing: true,
+				},
+				{
+					from: '**/*',
+					context: path.resolve(__dirname, './data/sounds'),
+					to: './data/sounds',
+					noErrorOnMissing: true,
+				}
 			],
 		})
 	],

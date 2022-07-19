@@ -5,7 +5,7 @@ import { StorylineManager } from './managers/StorylineManager';
 import { FontsManager } from './managers/FontsManager';
 import { CompilationParams } from './utils/CompilationParams';
 
-class Application {
+export class Application {
 	private static _instance: Application;
 
 	static WIDTH: number = 1920;
@@ -21,7 +21,8 @@ class Application {
 	}
 
 	constructor() {
-		this.application = new PIXI.Application({ width: Application.WIDTH, height: Application.HEIGHT, antialias: true, backgroundColor: 0xffffff, resolution: 1 });
+
+		this.application = new PIXI.Application({ width: Application.WIDTH, height: Application.HEIGHT, antialias: true, backgroundColor: 0xffffff, resolution: 1});
 		this.renderer.view.style.display = 'none';
 
 		this.renderer.view.style.border = 'solid 1px #d2d2d2';
