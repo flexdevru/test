@@ -6,6 +6,8 @@ import * as Utils from "./utils/Utils";
 import { FontStyle } from "./utils/FontStyle"; 
 import { VideoPreloader } from './preloader/VideoPreloader';
 
+import { TextInput } from "pixi-textinput-v5";
+
 export class Main extends PIXI.Container {
 	public static DEBUG: boolean = true;
 	public static instance: Main;
@@ -58,6 +60,35 @@ export class Main extends PIXI.Container {
 		this.addChild(vp).position.set(400, 300);
 		vp.start();
 
+		let ti: TextInput = new TextInput({
+			input: {
+				fontSize: '25pt',
+				padding: '14px',
+				width: '500px',
+				color: '#26272E'
+			},
+			box: {
+				default: { fill: 0xE8E9F3, rounded: 16, stroke: { color: 0xCBCEE0, width: 4 } },
+				focused: { fill: 0xE1E3EE, rounded: 16, stroke: { color: 0xABAFC6, width: 4 } },
+				disabled: { fill: 0xDBDBDB, rounded: 16 }
+			}
+		});
+		this.addChild(ti).position.set(200, 600);
+
+		let ti2: TextInput = new TextInput({
+			input: {
+				fontSize: '25pt',
+				padding: '14px',
+				width: '500px',
+				color: '#26272E'
+			},
+			box: {
+				default: { fill: 0xE8E9F3, rounded: 16, stroke: { color: 0xCBCEE0, width: 4 } },
+				focused: { fill: 0xE1E3EE, rounded: 16, stroke: { color: 0xABAFC6, width: 4 } },
+				disabled: { fill: 0xDBDBDB, rounded: 16 }
+			}
+		});
+		this.addChild(ti2).position.set(200, 700);
 	}
 
 	private onPointerDown = (event:any) => { 

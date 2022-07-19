@@ -40,6 +40,11 @@ export class Application {
 		return this.application.renderer;
 	}
 
+	public get stage(): PIXI.Container {
+		return this.application.stage;
+	}
+
+
 	public init = () => {
 		this.main = new Main();
 		this.application.stage.addChild(this.main);
